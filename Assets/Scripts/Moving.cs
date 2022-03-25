@@ -7,8 +7,8 @@ public abstract class Moving : Fighter // abstract means, that the class can onl
     protected BoxCollider2D boxCollider;
     protected Vector3 moveDelta;
     protected RaycastHit2D hit;
-    protected float ySpeed = 0.85f;
-    protected float xSpeed = 1.1f;
+    public float ySpeed = 0.85f;
+    public float xSpeed = 1.1f;
 
     protected virtual void Start()
     {

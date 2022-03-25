@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Fighter
+  - Spawn
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Floor
+  - Water
+  - UI
+  - Blocking
+  - Creatures
+  - InFrontOfCreatures
+  - InFrontOfEverything
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 2852862839
+    locked: 0
+  - name: Interactables
+    uniqueID: 379360475
+    locked: 0
+  - name: Creatures
+    uniqueID: 17997181
+    locked: 0
+  - name: Weapon
+    uniqueID: 3582997987
+    locked: 0
+  - name: InFrontOfPlayer
+    uniqueID: 1515748241
+    locked: 0

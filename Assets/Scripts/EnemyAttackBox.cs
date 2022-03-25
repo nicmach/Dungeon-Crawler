@@ -6,10 +6,12 @@ public class EnemyAttackBox : CollideCharacters
 {
     public int damage;
     public float knockback;
+    private float lastAttackTime;
+    public float attackDelay;
 
     protected override void OnCollide(Collider2D coll)
     {
-        if (coll.tag == "Fighter" && coll.name == "Player_0")
+        if (coll.tag == "Fighter" && coll.name == "Player_0" && (lastAttackTime + attackDelay < Time.time))
         {
             Damage dmg = new Damage
             {
@@ -21,6 +23,8 @@ public class EnemyAttackBox : CollideCharacters
             coll.SendMessage("ReceiveDamage", dmg);
 
             Debug.Log(coll.name);
+
+            lastAttackTime = Time.time;
         }
     }
 }

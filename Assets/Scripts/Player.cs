@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : Moving
 {
     private SpriteRenderer spriteRenderer;
+    private bool playerAlive = true;
+
     protected override void Start()
     {
         base.Start();
@@ -12,7 +14,21 @@ public class Player : Moving
     }
     protected override void ReceiveDamage(Damage dmg)
     {
-        base.ReceiveDamage(dmg);
+        if (playerAlive)
+            base.ReceiveDamage(dmg);
+    }
+
+    protected override void Death()
+    {
+        playerAlive = false;
+        GameManager.instance.DeathWindow.SetTrigger("Shown");
+    }
+
+    public void Respawn()
+    {
+        Heal(maxHitpoint);
+        playerAlive = true;
+        lastImmune = Time.time; // To prevent knockback etc. from an attack before death (refer to Fighter.cs)
     }
 
     private void FixedUpdate()
@@ -21,8 +37,11 @@ public class Player : Moving
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-        UpdateMotor(new Vector3(x, y, 0));
-        GameManager.instance.OnHitpointChange();
+        if (playerAlive)
+        {
+            UpdateMotor(new Vector3(x, y, 0));
+            GameManager.instance.OnHitpointChange();
+        }
     }
 
     public void SwapSprite(int spriteID)
@@ -45,13 +64,14 @@ public class Player : Moving
 
     public void Heal(int healing)
     {
+        hitpoint += healing;
+
         if (hitpoint >= maxHitpoint)
         {
             hitpoint = maxHitpoint;
             return;
         }
 
-        hitpoint += healing;
         GameManager.instance.ShowText("+" + healing.ToString() + "hp", 25, new Color(0f, 179f, 0f), transform.position, Vector3.up * 40, 1.5f);
     }
 }

@@ -38,10 +38,14 @@ public class GameManager : MonoBehaviour
     public RectTransform HpBar;
     public GameObject ui;
     public GameObject hud;
+    public Animator DeathWindow;
+
 
     // Logic for gold, health, mana etc. 
     public int gold;
     public int experience;
+
+    public int Weapons;
 
     // Floating text
     public void ShowText(string message, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
@@ -108,6 +112,13 @@ public class GameManager : MonoBehaviour
     public void OnLevelUp()
     {
         Player.OnLevelUp();
+    }
+
+    public void Respawn()
+    {
+        DeathWindow.SetTrigger("Hidden");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("PlayerBase");
+        Player.Respawn();
     }
 
     // Update HpBar 

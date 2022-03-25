@@ -29,7 +29,7 @@ public class Enemy : Moving
     private void FixedUpdate()
     {
        // Check if the player is in the triggerRange
-       if (Vector3.Distance(playerTransform.position, startPosition) < chaseRange)
+       if (Vector3.Distance(playerTransform.position, startPosition) < chaseRange) // CHANGE THIS TO BE THE DISTANCE BETWEEN THE ATTACHED OBJECT AND THE PLAYER
        {
             if (Vector3.Distance(playerTransform.position, startPosition) < triggerRange)
                 chasing = true;
