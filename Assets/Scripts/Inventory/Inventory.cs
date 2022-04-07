@@ -2,27 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory
+public class Inventory : MonoBehaviour
 {
-    /**private List<Item> itemList;
+    public delegate void OnItemChanged(); //triggers all asigned methods if certain event is triggered
+    public OnItemChanged onItemChangedCallback;
 
-    public Inventory()
+    public int space = 20;
+
+    public List<Item> items = new List<Item>();
+    public static Inventory instance;
+
+    // Singleton
+    private void Awake()
     {
-        itemList = new List<Item>();
+       
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of Inventory found!");
+            return;
+        }
 
-        AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
-        Debug.Log("Inventory");
+        GameObject GameManager = GameObject.Find("GameManager");
+        instance = GameManager.GetComponent<Inventory>();
+
+        //instance = this;
     }
 
-    public void AddItem(Item item)
+    public bool Add(Item item)
     {
-        itemList.Add(item);
+        // add if-statement to check what to add and what not
+        if (items.Count >= space)
+        {
+            Debug.Log("Not enough inventory space!");
+            return false;
+        }
+
+        items.Add(item);
+
+        if (onItemChangedCallback != null)
+        {
+            onItemChangedCallback.Invoke();
+        }
+
+        return true;
     }
 
-    public List<Item> GetItemList()
+    public void Remove(Item item)
     {
-        return itemList;
-    }**/
+        items.Remove(item);
+
+        if (onItemChangedCallback != null)
+        {
+            onItemChangedCallback.Invoke();
+        }
+    }
 }

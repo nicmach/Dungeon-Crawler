@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+public class Item : ScriptableObject
 {
-    /**public enum ItemType
+    new public string name = "NewItem";
+    public Sprite icon = null;
+
+    public virtual void Use()
     {
-        Sword,
-        HeavyWeapon,
-        Axe,
-        Mace,
+        Debug.Log("Using " + name);
     }
 
-    public ItemType itemType;
-    public int amount;**/
+    public void RemoveFromInventory()
+    {
+        Inventory.instance.Remove(this);
+    }
 }

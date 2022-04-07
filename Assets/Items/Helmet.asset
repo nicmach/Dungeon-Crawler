@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07df74da57c934d4aac684be1d3ee913, type: 3}
+  m_Name: Helmet
+  m_EditorClassIdentifier: 
+  name: Helmet of Elemenary Protection
+  icon: {fileID: 5571604692194471167, guid: 16b4c8477bf04e648b6f2b083ea1ed8c, type: 3}
+  equipmentSlot: 0
+  armor: 0.5
+  armorModifier: 0.025
+  damageModifier: 0
+  damage: 0
+  knockbackModifier: 0
+  knockback: 0
+  health: 0
+  healthModifier: 0
+  fireballModifier: 0
+  speedModifier: 0
